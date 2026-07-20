@@ -1,39 +1,34 @@
 class Solution {
 public:
-    bool check(vector<int>& weights, int mid, int days){
+    bool check(int mid, vector<int>& weights, int day){
         int s = 0;
-        int day = 1;
+        int days = 1;
         for(int x : weights){
-            s+= x;
+            s += x;
             if(x > mid)return false;
             if(s > mid){
-                day++;
-                s=0;
-                s+=x;
+                days++;
+                s = 0;
+                s += x;
             }
         }
-        if(day <= days){
+        if(days <= day){
             return true;
         }
         return false;
     }
     int shipWithinDays(vector<int>& weights, int days) {
-        int high = 0;
-        for(int x : weights){
-            high += x;
-        }
-        int low = 1;
-        int ans;
+        int low = *max_element(weights.begin(),weights.end());
+        int high = accumulate(weights.begin(),weights.end(), 0);
         while(low <= high){
-            int mid = low + (high - low)/2;
-            if(check(weights, mid, days)){
+            int mid = low + (high - low) /2;
+            if(check(mid, weights, days)){
                 high = mid - 1;
-                ans = mid;
             }
             else{
                 low = mid + 1;
             }
         }
-        return ans;
+        return low; 
     }
 };
