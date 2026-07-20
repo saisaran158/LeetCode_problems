@@ -5,7 +5,6 @@ public:
         int days = 1;
         for(int x : weights){
             s += x;
-            if(x > mid)return false;
             if(s > mid){
                 days++;
                 s = 0;
