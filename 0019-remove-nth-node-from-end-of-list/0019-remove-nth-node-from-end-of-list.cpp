@@ -23,10 +23,6 @@ public:
             slow = slow -> next;
             fast = fast -> next;
         }
-        if(slow -> next == fast && fast -> next == NULL){
-            slow -> next = NULL;
-        }
-        if(slow -> next != NULL && slow -> next -> next != NULL)
         slow -> next = slow -> next -> next;
         return head;
     }
