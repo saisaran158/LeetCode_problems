@@ -11,7 +11,7 @@ public:
                     continue;
                 else if (nums1[i - 1] == nums2[j - 1]) {
                     dp[i][j] = dp[i - 1][j - 1] + 1;
-                    maxy = max(maxy, dp[i - 1][j - 1] + 1);
+                    maxy = max(maxy, dp[i][j]);
                 } else
                     dp[i][j] = 0;
             }
