@@ -5,8 +5,8 @@ public:
         int high = x;
         int ans = 0;
         while(low <= high){
-            long long mid = low + (high - low) / 2;
-            if(mid * mid <= x){
+            int mid = low + (high - low) / 2;
+            if(mid  <= x / mid){
                 ans = mid;
                 low = mid + 1;
             }
