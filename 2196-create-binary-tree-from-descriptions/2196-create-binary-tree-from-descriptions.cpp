@@ -12,20 +12,19 @@
  */
 class Solution {
 public:
-    int flag = 0;
-    TreeNode* build(vector<vector<int>>& descriptions, int rooot,
-                    map<int, int>& lchild, map<int, int>& rchild) {
+    TreeNode* build(int rooot, unordered_map<int, int>& lchild,
+                    unordered_map<int, int>& rchild) {
         if (rooot == 0)
             return NULL;
         TreeNode* root = new TreeNode(rooot);
 
-        root -> left = build(descriptions, lchild[rooot], lchild, rchild);
-        root -> right = build(descriptions, rchild[rooot], lchild, rchild);
-        
+        root->left = build(lchild[rooot], lchild, rchild);
+        root->right = build(rchild[rooot], lchild, rchild);
+
         return root;
     }
     TreeNode* createBinaryTree(vector<vector<int>>& descriptions) {
-        map<int, int> mp;
+        unordered_map<int, int> mp;
         for (int i = 0; i < descriptions.size(); i++) {
             mp[descriptions[i][1]]++;
         }
@@ -36,8 +35,8 @@ public:
                 break;
             }
         }
-        map<int, int> lchild;
-        map<int, int> rchild;
+        unordered_map<int, int> lchild;
+        unordered_map<int, int> rchild;
         for (int i = 0; i < descriptions.size(); i++) {
             if (descriptions[i][2] == 1) {
                 lchild[descriptions[i][0]] = descriptions[i][1];
@@ -45,7 +44,7 @@ public:
                 rchild[descriptions[i][0]] = descriptions[i][1];
             }
         }
-        TreeNode* root = build(descriptions, rooot, lchild, rchild);
+        TreeNode* root = build(rooot, lchild, rchild);
         return root;
     }
 };
