@@ -27,9 +27,8 @@ public:
         }
 
         ds.push_back(root->val);
-        sum += root->val;
-        recursion(root->left, sum, targetSum, ans, ds);
-        recursion(root->right, sum, targetSum, ans, ds);
+        recursion(root->left, sum + root->val, targetSum, ans, ds);
+        recursion(root->right, sum + root->val, targetSum, ans, ds);
         ds.pop_back();
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
