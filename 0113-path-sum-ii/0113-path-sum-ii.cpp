@@ -31,7 +31,6 @@ public:
         recursion(root->left, sum, targetSum, ans, ds);
         recursion(root->right, sum, targetSum, ans, ds);
         ds.pop_back();
-        sum -= root->val;
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         vector<vector<int>> ans;
