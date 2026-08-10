@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    int recursion(TreeNode* root, map<TreeNode*, int>&sib){
+    int recursion(TreeNode* root, unordered_map<TreeNode*, int>&sib){
         if(!root) return 0;
 
         int left = recursion(root -> left, sib);
@@ -22,18 +22,14 @@ public:
         sib[root -> right] = left + right;
         return root -> val;
     }
-    void recursions(TreeNode* root, vector<int>& level, int lev){
+    void recursions(TreeNode* root, unordered_map<int, int>&level, int lev){
         if(!root) return ;
         
-        if(level.size() == lev){
-            level.push_back(root -> val);
-        }
-        else
         level[lev] += root -> val;
         recursions(root -> left, level, lev + 1);
         recursions(root -> right, level, lev + 1);
     }
-    void solve(TreeNode* root, int lev, map<TreeNode*, int>& sib, vector<int>& level){
+    void solve(TreeNode* root, int lev, unordered_map<TreeNode*, int>& sib, unordered_map<int, int>& level){
         if(!root) return;
 
         root -> val = level[lev] - sib[root];
@@ -41,9 +37,9 @@ public:
         solve(root -> right, lev + 1, sib, level);
     }
     TreeNode* replaceValueInTree(TreeNode* root) {
-        map<TreeNode*, int>sib;
+        unordered_map<TreeNode*, int>sib;
         recursion(root, sib);
-        vector<int> level;
+        unordered_map<int, int>level;
         recursions(root, level, 0);
         solve(root, 0, sib, level);
         root -> val = 0;
