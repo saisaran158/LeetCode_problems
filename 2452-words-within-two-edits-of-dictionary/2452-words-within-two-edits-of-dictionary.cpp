@@ -10,6 +10,7 @@ public:
                     if (queries[i][j] != dictionary[k][j]) {
                         diff++;
                     }
+                    if (diff>2) break;
                 }
                 if (diff <= 2) {
                     ans.push_back(queries[i]);
