@@ -17,7 +17,7 @@ public:
         if (dp[r1][c1][r2] != -1e9)
             return dp[r1][c1][r2];
         if (r1 == m - 1 && c1 == n - 1) {
-            return dp[r1][c1][r2] = grid[r1][c1];
+            return grid[r1][c1];
         }
         int ans = 0;
 
