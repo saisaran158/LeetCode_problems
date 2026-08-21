@@ -1,27 +1,30 @@
 class Solution {
 public:
+    bool solve(int i, int j, string& s, string& p, vector<vector<int>>& dp){
+        if(i < 0 && j < 0) return true;
+        if(i >= 0 && j < 0) return false;
+        if(i < 0 && j >= 0){
+            for(int x = 0; x <= j; x++){
+                if(p[x] != '*')
+                return false;
+            }
+            return true;
+        }
+        if(dp[i][j] != -1) return dp[i][j];
+
+        if(s[i] == p[j] || p[j] =='?'){
+            return dp[i][j] = solve(i - 1, j - 1, s, p, dp);
+        }
+        else if(p[j] == '*'){
+            return dp[i][j] = solve(i - 1, j, s, p, dp) || solve(i, j - 1, s, p, dp);
+        }
+
+        return dp[i][j] = false;
+    }
     bool isMatch(string s, string p) {
         int m = s.size();
         int n = p.size();
-        vector<vector<int>> dp(n + 1,vector<int>(m + 1));
-        for(int i = 0; i <= n; i++){
-            for(int j = 0; j <=m; j++){
-                if(i == 0 && j == 0) dp[i][j] = 1;
-                else if(i == 0) dp[i][j] = 0;
-                else if(j == 0 && p[i-1] == '*'){
-                    dp[i][j] = dp[i-1][j];
-                }else if( j == 0 ) continue;
-                else if((p[i-1] == s[j-1]) || p[i-1] == '?'){
-                    dp[i][j] = dp[i-1][j-1];
-                }
-                else if(p[i-1] == '*'){
-                    dp[i][j] = dp[i-1][j] || dp[i][j-1];
-                }
-                
-                else
-                    dp[i][j] = 0;
-            }
-        }
-        return dp[n][m];
+        vector<vector<int>>dp(m, vector<int>(n, -1));
+        return solve(m - 1, n - 1, s, p, dp);
     }
 };
