@@ -1,17 +1,17 @@
 class Solution {
 public:
-    bool palin(int i, int j, string& s, vector<vector<int>>& pal) {
+    bool palin(int i, int j, string& s, vector<vector<int>>&dp1) {
 
         if (i >= j)
             return true;
 
-        if (pal[i][j] != -1)
-            return pal[i][j];
+        if (dp1[i][j] != -1)
+            return dp1[i][j];
 
         if (s[i] != s[j])
-            return pal[i][j] = false;
+            return dp1[i][j] = false;
 
-        return pal[i][j] = palin(i + 1, j - 1, s, pal);
+        return dp1[i][j] = palin(i + 1, j - 1, s, dp1);
     }
     int solve(int i, int& n, string& s, int& k, vector<int>& dp,
               vector<vector<int>>& dp1) {
