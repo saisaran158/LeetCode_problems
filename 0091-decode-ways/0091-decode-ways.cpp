@@ -3,7 +3,7 @@ public:
 
     int recursion(int i, int& n, string& s, map<string, int>&mp, vector<int>& dp){
         if(i == n) return 1;
-        if(s[i] == '0') return 0;
+        // if(s[i] == '0') return 0;
         if(dp[i] != -1) return dp[i];
         int ans = 0;
         string r;
