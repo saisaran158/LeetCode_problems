@@ -22,12 +22,6 @@ public:
                 dp[i][j] = m >= 1 ? m + 1 : dp[i][j];
             }
         }
-        for(int i = 0; i <= m; i++){
-            for(int j = 0; j <= n; j++){
-                cout << dp[i][j] <<" ";
-            }
-            cout << endl;
-        }
         int c = 0;
         for(int i = 0; i <= m; i++){
             for(int j = 0; j <= n; j++){
