@@ -1,9 +1,8 @@
 class Solution {
 public:
 
-    int recursion(int i, int& n, string& s, map<string, int>&mp, vector<int>& dp){
+    int recursion(int i, int& n, string& s, unordered_map<string, int>&mp, vector<int>& dp){
         if(i == n) return 1;
-        // if(s[i] == '0') return 0;
         if(dp[i] != -1) return dp[i];
         int ans = 0;
         string r;
@@ -18,7 +17,7 @@ public:
     }
     int numDecodings(string s) {
         int n = s.size();
-        map<string, int>mp;
+        unordered_map<string, int>mp;
         for(int i = 1; i <= 26; i++){
             string a = to_string(i);
             mp[a]++;
