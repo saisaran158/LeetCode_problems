@@ -17,10 +17,6 @@ public:
                 count--;
             }
         }
-        for(int x : prefix){
-            cout << x << " ";
-        }
-        cout << endl;
         vector<int>res;
         for(int i = 0; i < queries.size(); i++){
             int start = queries[i][0];
