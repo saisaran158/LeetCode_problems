@@ -19,9 +19,9 @@ public:
         int take = 0; 
         if(flag == 0){
             take = scores + rec(i + 1, n, words, mp, score);
-            for(int k = 0; k < words[i].size(); k++){
-                mp[words[i][k]]++;
-            }
+            // for(int k = 0; k < words[i].size(); k++){
+            //     mp[words[i][k]]++;
+            // }
         }
         int nontake = rec(i + 1, n, words, copy, score);
 
