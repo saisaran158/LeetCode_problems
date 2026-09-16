@@ -14,14 +14,14 @@ public:
         if(op1 > 0)
         ans = min(ans, ele + rec(i + 1, n, nums, k, op1 - 1, op2, dp));
 
-        if (op2 > 0 && nums[i] >= k && k >0) {
+        if (op2 > 0 && nums[i] >= k) {
             ans = min(ans, nums[i] - k + rec(i + 1, n, nums, k, op1, op2 - 1, dp));
         }
 
-        if (op2 > 0 && op1 > 0 && ele >= k && k > 0) {
+        if (op2 > 0 && op1 > 0 && ele >= k) {
             ans = min(ans, ele - k + rec(i + 1, n, nums, k, op1 - 1, op2 - 1, dp));
         }
-        if (op2 > 0 && op1 > 0 && nums[i] >= k && k > 0) {
+        if (op2 > 0 && op1 > 0 && nums[i] >= k) {
             int m = (nums[i] - k);
             int p = 0;
             if (m % 2 == 0)
