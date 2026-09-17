@@ -20,7 +20,6 @@ public:
         for(int i = 0; i < n; i++){
             mp[arr[i]] = i;
         }
-        vector<vector<int>>dp(n + 1, vector<int>(n + 1, -1));
         for(int prev = 0; prev < n; prev++){
             for(int curr = prev + 1; curr < n; curr++){
                 ans = max(ans, rec(prev, curr, arr, mp) + 2);
