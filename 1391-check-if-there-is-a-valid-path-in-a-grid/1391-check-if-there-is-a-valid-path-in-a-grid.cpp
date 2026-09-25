@@ -6,7 +6,6 @@ public:
         return false;
     }
     bool dfs(int r, int c, vector<vector<int>>& grid, vector<vector<int>>& vis){
-        cout << r << " " << c << endl;
         if(r == m - 1 && c == n - 1) return true;
         vis[r][c] = 1;
         if(grid[r][c] == 1){
