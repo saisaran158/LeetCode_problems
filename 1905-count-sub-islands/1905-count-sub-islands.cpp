@@ -26,7 +26,6 @@ public:
             for(int j = 0; j < n; j++){
                 if(grid2[i][j] == 1 && !vis[i][j]){
                     if(dfs(i, j, grid1, grid2, vis)){
-                        cout << i << " " << j << endl;
                         ans++;
                     }
                 }
