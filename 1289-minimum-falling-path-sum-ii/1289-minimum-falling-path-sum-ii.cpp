@@ -1,7 +1,6 @@
 class Solution {
 public:
     int solve(int i, int j, vector<vector<int>>& dp, vector<vector<int>>& grid){
-        if(i < 0 || j >= grid[0].size()) return INT_MAX;
         if(i == grid.size() - 1 && j >=0 && j < grid[0].size()) return grid[i][j];
         if(dp[i][j] != 1e9) return dp[i][j];
 
