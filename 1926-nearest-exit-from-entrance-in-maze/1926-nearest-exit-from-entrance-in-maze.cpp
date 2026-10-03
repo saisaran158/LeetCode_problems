@@ -22,7 +22,6 @@ public:
                 int nr = r + delr[i];
                 int nc = c + delc[i];
                 if(nr >= 0 && nc >= 0 && nr < m && nc < n && maze[nr][nc] == '.' && !vis[nr][nc]){
-                    cout << nr << " " << nc <<endl;
                     vis[nr][nc] = 1;
                     q.push({nr, nc, steps + 1});
                 }
