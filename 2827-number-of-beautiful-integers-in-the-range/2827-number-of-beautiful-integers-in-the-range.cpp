@@ -3,7 +3,7 @@ public:
     int dp[10][2][2][20][21];
     int rec(int i, int size, string& nums, bool tight, bool lz, int& k, int rem, int count){
         if(i == size){
-            if(count == 0 && rem == 0 && !lz){
+            if(count == 0 && rem == 0){
                 return 1;
             }
             return 0;
@@ -13,7 +13,7 @@ public:
         int up = (tight == true) ? nums[i] - '0' : 9;
         for(int digit = 0; digit <= up; digit++){
             if(lz && digit == 0){
-                ans += rec(i + 1, size, nums, (tight && digit == up), 1, k, rem, count);
+                ans += rec(i + 1, size, nums, 0, 1, k, rem, count);
             }
             else{
                 ans += rec(i + 1, size, nums, (tight && digit == up), (lz && digit == 0), k, (rem * 10 + digit) % k, digit % 2 == 0 ? count + 1 : count - 1);
