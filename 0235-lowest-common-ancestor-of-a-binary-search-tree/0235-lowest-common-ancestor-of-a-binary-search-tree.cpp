@@ -11,18 +11,19 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if(!root) return NULL;
-        if(root -> val == p -> val || root -> val == q -> val){
-            return root;
+        TreeNode* curr = root;
+        while(curr){
+            if(curr -> val > p -> val && curr -> val > q -> val){
+                // cout << curr -> val << endl; 
+                curr = curr -> left;
+            }
+            else if(curr -> val < p -> val && curr -> val < q -> val){
+                curr = curr -> right;
+            }
+            else{
+                return curr;
+            }
         }
-
-        TreeNode* l = lowestCommonAncestor(root -> left, p, q);
-        TreeNode* r = lowestCommonAncestor(root -> right, p, q);
-        if(l != NULL && r != NULL)
-        return root;
-        if(l != NULL){
-            return l;
-        }
-        return r;
+        return NULL;
     }
 };
