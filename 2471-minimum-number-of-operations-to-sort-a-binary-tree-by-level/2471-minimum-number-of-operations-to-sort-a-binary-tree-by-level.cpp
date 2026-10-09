@@ -24,11 +24,10 @@ public:
         for(int i = 0; i < n; i++){
             if(vis[i]) continue;
             int c = 0;
-            int j = i;
-            while(!vis[j]){
-                vis[j] = 1;
+            while(!vis[i]){
+                vis[i] = 1;
                 c++;
-                j = mp[curr[j]];
+                i = mp[curr[i]];
             }
             ans += (c - 1);
         }
