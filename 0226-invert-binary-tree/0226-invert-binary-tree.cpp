@@ -6,20 +6,19 @@
  *     TreeNode *right;
  *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
  *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left),
- * right(right) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
 class Solution {
 public:
-    TreeNode* recursion(TreeNode* root) {
-        if (!root)
-            return NULL;
-
-        swap(root->left, root->right);
-        recursion(root->left);
-        recursion(root->right);
+    void rec(TreeNode* root){
+        if(!root) return;
+        swap(root -> left, root -> right);
+        rec(root -> left);
+        rec(root -> right);
+    }
+    TreeNode* invertTree(TreeNode* root) {
+        rec(root);
         return root;
     }
-    TreeNode* invertTree(TreeNode* root) { return recursion(root); }
 };
