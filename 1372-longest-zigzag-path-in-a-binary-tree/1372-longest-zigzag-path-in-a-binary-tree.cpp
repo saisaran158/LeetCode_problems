@@ -40,7 +40,7 @@ public:
         solve(root -> right, ans);
     }
     int longestZigZag(TreeNode* root) {
-        dp.clear();
+        // dp.clear();
         int ans = 0;
         solve(root, ans);
         return ans;
