@@ -14,8 +14,6 @@ public:
             res += s.top();
             s.pop();
         }
-        cout << res << endl;
-        cout << k << endl;
         while(res.size() > 0 && res[res.size() - 1] == '0'){
             res.pop_back();
         }
